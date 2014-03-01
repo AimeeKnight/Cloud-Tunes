@@ -9,11 +9,12 @@ html(class='no-js', lang='en')
     link(rel='stylesheet', href='/css/foundation.css')
     link(rel='stylesheet', href='/less/app.css')
     script(src='/js/vendor/modernizr.js')
-  body
+   body
+   /*   
     .row
       .small-12.columns
         .panel
-          h1=title + ' : ' + moment(album.taken).format('MMMM Do, YYYY')
+          h1=title + ' : ' + moment(album.releaseyear).format('MMMM Do, YYYY')
     .row
       .small-12.columns
         a.button.tiny.radius(href='/') Home Page
@@ -35,6 +36,7 @@ html(class='no-js', lang='en')
       .small-12.columns
         each photo in album.photos
           .photo(style='background-image:url("'+photo+'")')
+  */
 
     script(src='/js/vendor/jquery.js')
     script(src='/js/vendor/foundation.js')

@@ -10,7 +10,11 @@ exports.index = function(req, res){
 };
 
 exports.show = function(req, res){
+
+  console.log('exports show called. req.params.id: ', req.params.id);
+
   Album.findById(req.params.id, function(album){
+    console.log('THIS SHOULD BE THE ALBUM: ', album);
     res.render('albums/show', {moment:moment, album:album, title: album.title});
   });
 };
@@ -26,7 +30,6 @@ exports.create = function(req, res){
     res.redirect('/');
   });
 };
-
 /*
 exports.photoAdd = function(req, res){
   Album.findById(req.params.id, function(album){
@@ -39,4 +42,3 @@ exports.photoAdd = function(req, res){
   });
 };
 */
-

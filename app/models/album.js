@@ -29,7 +29,7 @@ Album.prototype.addCover = function(oldpath){
 };
 
 Album.prototype.addSong = function(songId, fn){
-  var mongosongId = Mongo.ObjectID(songId);
+  var mongosongId = new Mongo.ObjectID(songId);
   this.songs.push(mongosongId);
   this.update(function(count){
     fn(count);
@@ -55,11 +55,17 @@ Album.findAll = function(fn){
 };
 
 Album.findById = function(id, fn){
-  var _id = Mongo.ObjectID(id);
+  var _id = new Mongo.ObjectID(id);
+
+  console.log('Album findById called. _id: ', _id);
 
   albums.findOne({_id:_id}, function(err, record){
     // extend (lodash method) sets the protoype of the object mongo returns
-    fn(_.extend(record, Album.prototype));
+    var newRecord = _.extend(record, Album.prototype);
+
+    console.log('albums findOne called. err, record, newRecord: ', err, record, newRecord);
+
+    fn(newRecord);
   });
 };
 
