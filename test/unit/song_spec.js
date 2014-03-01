@@ -4,6 +4,7 @@ process.env.DBNAME = 'tunes-test';
 var expect = require('chai').expect;
 var fs = require('fs');
 var exec = require('child_process').exec;
+var Mongo = require('mongodb');
 var Song;
 
 describe('Song', function(){
@@ -37,10 +38,12 @@ describe('Song', function(){
       var o = {};
       o.title = 'Test Song Title';
       o.artist = 'Test Michael Jackson';
+      o.albumId = '5311322f310e5e5a0aa18e04'
       var s1 = new Song(o);
       expect(s1).to.be.instanceof(Song);
       expect(s1.title).to.equal('Test Song Title');
       expect(s1.artist).to.equal('Test Michael Jackson');
+      expect(s1.albumId).to.be.instanceof(Mongo.ObjectID);
     });
   });
 
@@ -56,32 +59,6 @@ describe('Song', function(){
       expect(s1.filepath).to.equal('/audios/testmichaeljackson-testsongtest.mp3');
     });
   });
-
-/*
-  describe('#addPhoto', function(){
-    var a1;
-
-    beforeEach(function(done){
-      a1 = new Album({title:'Test A', taken:'2012-03-25'});
-      var oldname = __dirname + '/../fixtures/euro-copy1.jpg';
-      a1.addCover(oldname);
-      a1.insert(function(){
-        done();
-      });
-    });
-
-    it('should add a photo to the Album', function(done){
-      var id = a1._id.toString();
-      Album.findById(id, function(album){
-        var photo = __dirname + '/../fixtures/euro-copy2.jpg';
-        album.addPhoto(photo, 'france.jpg');
-        expect(album.photos).to.have.length(1);
-        expect(album.photos[0]).to.equal('/img/testa/france.jpg');
-        done();
-      });
-    });
-  });
-*/
 
   describe('#insert', function(){
     it('should insert a new Song into Mongo', function(done){
@@ -130,9 +107,9 @@ describe('Song', function(){
     var s1, s2, s3;
 
     beforeEach(function(done){
-      s1 = new Song({title:'Test A', artist:'artist1'});
-      s2 = new Song({title:'Test B', artist:'artist2'});
-      s3 = new Song({title:'Test C', artist:'artist3'});
+      s1 = new Song({title:'Test A', artist:'artist1', albumId:'5311322f310e5e5a0aa18e04'});
+      s2 = new Song({title:'Test B', artist:'artist2', albumId:'5311322f310e5e5a0aa18e04'});
+      s3 = new Song({title:'Test C', artist:'artist3', albumId:'5311322f310e5e5a0aa18e04'});
 
       s1.insert(function(){
         s2.insert(function(){

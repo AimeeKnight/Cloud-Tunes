@@ -5,7 +5,7 @@ var moment = require('moment');
 
 exports.index = function(req, res){
   Album.findAll(function(albums){
-    res.render('albums/index', {moment:moment, albums:albums, title: 'Photo Albums'});
+    res.render('albums/index', {moment:moment, albums:albums, title: 'Albums'});
   });
 };
 

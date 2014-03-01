@@ -11,6 +11,7 @@ var _ = require('lodash');
 function Song(song){
   this.title = song.title;
   this.artist = song.artist;
+  this.albumId = song.albumId ? Mongo.ObjectID(song.albumId) : null;
 }
 
 Song.prototype.addSong = function(oldpath){
@@ -27,17 +28,6 @@ Song.prototype.addSong = function(oldpath){
 
   this.filepath = relpath;
 };
-
-/*
-Album.prototype.addPhoto = function(oldpath, name){
-  var dirname = this.title.replace(/\s/g, '').toLowerCase();
-  var abspath = __dirname + '/../static';
-  var relpath = '/img/' + dirname + '/' + name;
-  fs.renameSync(oldpath, abspath + relpath);
-
-  this.photos.push(relpath);
-};
-*/
 
 Song.prototype.insert = function(fn){
   songs.insert(this, function(err, records){

@@ -60,7 +60,6 @@ describe('Tunes', function(){
       expect(a1.cover).to.equal('/img/testmichaeljackson-testthriller.jpg');
     });
   });
-
 /*
   describe('#addSong', function(){
     var s1;

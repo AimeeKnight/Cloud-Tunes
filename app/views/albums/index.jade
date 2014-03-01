@@ -22,7 +22,7 @@ html(class='no-js', lang='en')
           .album
             .cover(style='background-image:url("'+album.cover+'")')
             .title: a(href='/albums/' + album._id)= album.title
-            .taken= moment(album.taken).format('MMMM Do, YYYY')
+            .taken= moment(album.releasedate).format('MMMM Do, YYYY')
 
     script(src='/js/vendor/jquery.js')
     script(src='/js/vendor/foundation.js')
