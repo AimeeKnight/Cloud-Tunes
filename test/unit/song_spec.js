@@ -38,7 +38,7 @@ describe('Song', function(){
       var o = {};
       o.title = 'Test Song Title';
       o.artist = 'Test Michael Jackson';
-      o.albumId = '5311322f310e5e5a0aa18e04'
+      o.albumId = '5311322f310e5e5a0aa18e04';
       var s1 = new Song(o);
       expect(s1).to.be.instanceof(Song);
       expect(s1.title).to.equal('Test Song Title');
