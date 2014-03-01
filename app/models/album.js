@@ -28,6 +28,7 @@ Album.prototype.addCover = function(oldpath){
   this.cover = relpath;
 };
 
+/*
 Album.prototype.addSong = function(songId, fn){
   var mongosongId = Mongo.ObjectID(songId);
   this.songs.push(mongosongId);
@@ -35,6 +36,7 @@ Album.prototype.addSong = function(songId, fn){
     fn(count);
   });
 };
+*/
 
 Album.prototype.insert = function(fn){
   albums.insert(this, function(err, records){

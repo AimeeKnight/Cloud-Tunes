@@ -61,6 +61,7 @@ describe('Tunes', function(){
     });
   });
 
+/*
   describe('#addSong', function(){
     var s1;
 
@@ -84,6 +85,7 @@ describe('Tunes', function(){
       });
     });
   });
+*/
 
   describe('#insert', function(){
     it('should insert a new Album into Mongo', function(done){
